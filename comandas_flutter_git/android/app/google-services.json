@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "147725350696",
+    "project_id": "comandas-flutter",
+    "storage_bucket": "comandas-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147725350696:android:74b9bfcbcc2244e667821d",
+        "android_client_info": {
+          "package_name": "com.example.comandas_flutter_git"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147725350696-ov8om1tpc3eee2ncvmp7k5ofdmg6fc4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNZ3C6I5rvj_BQmutvgXHvAwOAhjhNUa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147725350696-ov8om1tpc3eee2ncvmp7k5ofdmg6fc4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
