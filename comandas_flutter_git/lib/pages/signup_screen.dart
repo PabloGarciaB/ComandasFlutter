@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
-import 'package:comandas_flutter_git/pages/bienvenida_login.dart';
 import 'home_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
