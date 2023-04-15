@@ -1,5 +1,8 @@
+import 'package:comandas_flutter_git/pages/home_screen.dart';
+import 'package:comandas_flutter_git/pages/reset_password.dart';
 import 'package:comandas_flutter_git/pages/signup_screen.dart';
 import 'package:comandas_flutter_git/utils/colors_util.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
 
@@ -32,20 +35,32 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               children: <Widget>[
                 logoWidget("assets/images/bienvenido_logo.png"),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 reusableTextField("Nombre de usuario", Icons.person, false,
                     _emailTextController),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 reusableTextField("Contraseña", Icons.lock_clock_sharp, true,
                     _passwordTextController),
-                SizedBox(
-                  height: 20,
+                const SizedBox(
+                  height: 1,
                 ),
-                signInSignUpButton(context, true, () {}),
+                forgetPassword(context),
+                firebaseButton(context, "Entrar", () {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                  }).onError((error, stackTrace) {
+                    print("Error: ${error.toString()}");
+                  });
+                }),
                 signUpOption()
               ],
             ),
@@ -74,4 +89,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ],
     );
   }
+}
+
+Widget forgetPassword(BuildContext context) {
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    height: 35,
+    alignment: Alignment.bottomRight,
+    child: TextButton(
+      child: const Text(
+        "¿Olvidaste tu contraseña?",
+        style: TextStyle(color: Colors.black87),
+        textAlign: TextAlign.right,
+      ),
+      onPressed: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ResetPassword())),
+    ),
+  );
 }

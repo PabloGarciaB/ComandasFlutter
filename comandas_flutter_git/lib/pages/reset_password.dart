@@ -3,18 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
 import 'home_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController _passwordTextController = TextEditingController();
+class _ResetPasswordState extends State<ResetPassword> {
   TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _userTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: const Text(
-            "Crear cuenta",
+            "Restablecer cuenta",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
@@ -44,35 +43,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Ingresa un nombre de usuario",
-                      Icons.person, false, _userTextController),
-                  SizedBox(
-                    height: 20,
-                  ),
                   reusableTextField("Ingresa un correo electronico",
                       Icons.email_sharp, false, _emailTextController),
                   const SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Ingresa una contraseña",
-                      Icons.lock_clock_sharp, true, _passwordTextController),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  firebaseButton(context, "Crear cuenta", () {
+                  firebaseButton(context, "Restablecer", () {
                     FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: _emailTextController.text,
-                            password: _passwordTextController.text)
-                        .then((value) {
-                      print("Cuenta creada");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                    }).onError((error, stackTrace) {
-                      print("Error ${error.toString()} ");
-                    });
+                        .sendPasswordResetEmail(
+                            email: _emailTextController.text)
+                        .then((value) => Navigator.of(context).pop());
+                    Fluttertoast.showToast(
+                        msg:
+                            "Si existe el correo le llegara un enlace para restablecer la contraseña",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
                   }),
                 ],
               ),
