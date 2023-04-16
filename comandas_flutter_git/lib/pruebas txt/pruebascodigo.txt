@@ -1,0 +1,79 @@
+try{
+FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController, password: _passwordTextController);
+
+Fluttertoast.showToast(
+                          msg: "Sesión valida, bienvenido",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+
+
+}
+on FirebaseAuthException catch (e){
+    if(e.code == 'user-not-found){
+        Fluttertoast.showToast(
+                        msg: "Usuario no encontrado",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+    }else if(e.code == 'wrong-password'){
+        Fluttertoast.showToast(
+                        msg: "Contraseña incorrecta",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+    }
+}
+
+
+
+
+
+
+if (_emailTextController.text.isEmpty) {
+                    Fluttertoast.showToast(
+                        msg: "Ingresa un correo electronico válido",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+                  } else if (_passwordTextController.text.isEmpty) {
+                    Fluttertoast.showToast(
+                        msg: "La contraseña no es válida ",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+                  } else {
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      Fluttertoast.showToast(
+                          msg: "Sesión valida, bienvenido",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    }).onError((error, stackTrace) {
+                      print("Error: ${error.toString()}");
+                    });
+                  }

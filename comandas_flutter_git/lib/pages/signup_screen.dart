@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
 import 'home_screen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -60,19 +61,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 20,
                   ),
                   firebaseButton(context, "Crear cuenta", () {
-                    FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: _emailTextController.text,
-                            password: _passwordTextController.text)
-                        .then((value) {
-                      print("Cuenta creada");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                    }).onError((error, stackTrace) {
-                      print("Error ${error.toString()} ");
-                    });
+                    if (_emailTextController.text.isEmpty ||
+                        _emailTextController.text.length < 1) {
+                      Fluttertoast.showToast(
+                          msg: "Ingresa un correo electronico válido",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                    } else if (_passwordTextController.text.isEmpty ||
+                        _passwordTextController.text.length < 6) {
+                      Fluttertoast.showToast(
+                          msg: "Ingresa una contraseña mayor a 6 caracteres",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                    } else if (_userTextController.text.isEmpty ||
+                        _userTextController.text.length < 4) {
+                      Fluttertoast.showToast(
+                          msg:
+                              "Ingresa un nombre de usuario mayor a 4 caracteres",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                    } else {
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text)
+                          .then((value) {
+                        print("Cuenta creada");
+                        Fluttertoast.showToast(
+                            msg: "Cuenta creada, bienvenido",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.white,
+                            textColor: Colors.black87,
+                            fontSize: 16);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
+                      }).onError((error, stackTrace) {
+                        print("Error ${error.toString()} ");
+                      });
+                    }
                   }),
                 ],
               ),
