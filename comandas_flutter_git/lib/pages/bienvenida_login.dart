@@ -67,6 +67,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         backgroundColor: Colors.white,
                         textColor: Colors.black87,
                         fontSize: 16);
+                  } else if (FirebaseAuth.instance.currentUser == null) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => WelcomeScreen())));
                   } else {
                     FirebaseAuth.instance
                         .signInWithEmailAndPassword(
