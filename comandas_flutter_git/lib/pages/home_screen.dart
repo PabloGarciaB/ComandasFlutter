@@ -16,11 +16,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  List _pantallas = [HomeScreen(), Inventario(), Menu(), Comandas()];
+  List _pantallas = [];
+  late Widget _currentPage;
 
-  void _updateIndex(int index) {
+  @override
+  void initState() {
+    super.initState();
+    _pantallas
+      ..add(HomeScreen())
+      ..add(Inventario())
+      ..add(Menu())
+      ..add(Comandas());
+  }
+
+  void _changePage(int selectedIndex) {
     setState(() {
-      _currentIndex = index;
+      _currentIndex = selectedIndex;
+      _currentPage = _pantallas[selectedIndex];
     });
   }
 
@@ -101,40 +113,34 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _updateIndex,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Inicio',
-              backgroundColor: Color.fromRGBO(189, 168, 28, 74),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.inventory),
-              label: 'Inventario',
-              backgroundColor: Color.fromRGBO(189, 168, 28, 74),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.restaurant_menu),
-              label: "Menu",
-              backgroundColor: Color.fromRGBO(138, 131, 90, 54),
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.article),
-                label: "Comandas",
-                backgroundColor: Color.fromRGBO(240, 179, 60, 94))
-          ]),
-      body: Container(
-        child: Container(
-          height: 800,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: hexStringToColor("FFD194"),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-            ),
+        currentIndex: _currentIndex,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Inicio',
+            backgroundColor: Color.fromRGBO(189, 168, 28, 74),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.inventory),
+            label: 'Inventario',
+            backgroundColor: Color.fromRGBO(189, 168, 28, 74),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_menu),
+            label: "Menu",
+            backgroundColor: Color.fromRGBO(138, 131, 90, 54),
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: "Comandas",
+              backgroundColor: Color.fromRGBO(240, 179, 60, 94))
+        ],
+        onTap: (selectedIndex) => _changePage(selectedIndex),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(12.0),
+          child: _currentPage,
         ),
       ),
     );
