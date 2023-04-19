@@ -1,8 +1,10 @@
 import 'package:comandas_flutter_git/pages/bienvenida_login.dart';
+import 'package:comandas_flutter_git/pages/comandas_screen.dart';
+import 'package:comandas_flutter_git/pages/inventario_screen.dart';
+import 'package:comandas_flutter_git/pages/menu_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import '../utils/colors_util.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +15,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+  List _pantallas = [HomeScreen(), Inventario(), Menu(), Comandas()];
+
+  void _updateIndex(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   Widget _selectedOptionNavegar(@required Color color, @required String title,
       @required String subtitle) {
     return Container(
@@ -89,34 +100,31 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         centerTitle: true,
       ),
-      bottomNavigationBar:
-          BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Inicio',
-          backgroundColor: Color.fromRGBO(189, 168, 28, 74),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.inventory),
-          label: 'Inventario',
-          backgroundColor: Color.fromRGBO(189, 168, 28, 74),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.restaurant_menu),
-          label: "Menu",
-          backgroundColor: Color.fromRGBO(138, 131, 90, 54),
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: "Comandas",
-            backgroundColor: Color.fromRGBO(240, 179, 60, 94))
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: _updateIndex,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Inicio',
+              backgroundColor: Color.fromRGBO(189, 168, 28, 74),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.inventory),
+              label: 'Inventario',
+              backgroundColor: Color.fromRGBO(189, 168, 28, 74),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.restaurant_menu),
+              label: "Menu",
+              backgroundColor: Color.fromRGBO(138, 131, 90, 54),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.article),
+                label: "Comandas",
+                backgroundColor: Color.fromRGBO(240, 179, 60, 94))
+          ]),
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          hexStringToColor("D1913C"),
-          hexStringToColor("FFD194")
-        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: Container(
           height: 800,
           width: double.infinity,
@@ -126,76 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
-          ),
-          child: ListView(
-            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30, left: 30),
-                child: Text(
-                  "Comienza a navegar",
-                  style: TextStyle(
-                    fontSize: 19,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 10,
-                    top: 30,
-                  ),
-                  child: Row(
-                    children: [
-                      _selectedOptionNavegar(hexStringToColor("D1913C"),
-                          "Ejemplo 1", "Ejemplo subtitulo"),
-                      _selectedOptionNavegar(hexStringToColor("D1913C"),
-                          "Ejemplo 1", "Ejemplo subtitulo"),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /*Text(
-                      "Extras",
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),*/
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 20,
-                      ),
-                      child: Container(
-                        height: 270,
-                        child: GridView.count(
-                          crossAxisCount: 1,
-                          crossAxisSpacing: 16,
-                          mainAxisSpacing: 25,
-                          childAspectRatio: 1.30,
-                          children: [
-                            _selectedExtras(
-                                "assets/images/comanda.png", "Generar comanda"),
-                            _selectedExtras(
-                                "assets/images/inventario.png", "Inventario"),
-                            _selectedExtras(
-                                "assets/images/menu.png", "Registrar ménu")
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
           ),
         ),
       ),
