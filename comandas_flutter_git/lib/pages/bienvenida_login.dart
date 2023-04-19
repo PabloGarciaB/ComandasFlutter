@@ -5,7 +5,6 @@ import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -51,41 +50,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 forgetPassword(context),
                 firebaseButton(context, "Entrar", () {
-                  if (_emailTextController.text.isEmpty) {
-                    Fluttertoast.showToast(
-                        msg: "Ingresa un correo electronico válido",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.white,
-                        textColor: Colors.black87,
-                        fontSize: 16);
-                  } else if (_passwordTextController.text.isEmpty) {
-                    Fluttertoast.showToast(
-                        msg: "Ingresa la contraseña ",
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.white,
-                        textColor: Colors.black87,
-                        fontSize: 16);
-                  } else if (FirebaseAuth.instance.currentUser == null) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => WelcomeScreen())));
-                  } else {
-                    FirebaseAuth.instance
-                        .signInWithEmailAndPassword(
-                            email: _emailTextController.text,
-                            password: _passwordTextController.text)
-                        .then((value) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                    }).onError((error, stackTrace) {
-                      print("Error: ${error.toString()}");
-                    });
-                  }
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                  }).onError((error, stackTrace) {
+                    print("Error: ${error.toString()}");
+                  });
                 }),
                 signUpOption()
               ],
