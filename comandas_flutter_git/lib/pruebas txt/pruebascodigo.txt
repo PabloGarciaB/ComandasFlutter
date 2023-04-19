@@ -1,0 +1,171 @@
+try{
+FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController, password: _passwordTextController);
+
+Fluttertoast.showToast(
+                          msg: "Sesión valida, bienvenido",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+
+
+}
+on FirebaseAuthException catch (e){
+    if(e.code == 'user-not-found){
+        Fluttertoast.showToast(
+                        msg: "Usuario no encontrado",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+    }else if(e.code == 'wrong-password'){
+        Fluttertoast.showToast(
+                        msg: "Contraseña incorrecta",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+    }
+}
+
+
+
+
+
+
+if (_emailTextController.text.isEmpty) {
+                    Fluttertoast.showToast(
+                        msg: "Ingresa un correo electronico válido",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+                  } else if (_passwordTextController.text.isEmpty) {
+                    Fluttertoast.showToast(
+                        msg: "La contraseña no es válida ",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.black87,
+                        fontSize: 16);
+                  } else {
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      Fluttertoast.showToast(
+                          msg: "Sesión valida, bienvenido",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.black87,
+                          fontSize: 16);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    }).onError((error, stackTrace) {
+                      print("Error: ${error.toString()}");
+                    });
+                  }
+
+
+
+
+ Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          hexStringToColor("D1913C"),
+          hexStringToColor("FFD194")
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        child: Container(
+          height: 800,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: hexStringToColor("FFD194"),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
+          ),
+          child: ListView(
+            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30, left: 30),
+                child: Text(
+                  "Comienza a navegar",
+                  style: TextStyle(
+                    fontSize: 19,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    top: 30,
+                  ),
+                  child: Row(
+                    children: [
+                      _selectedOptionNavegar(hexStringToColor("D1913C"),
+                          "Ejemplo 1", "Ejemplo subtitulo"),
+                      _selectedOptionNavegar(hexStringToColor("D1913C"),
+                          "Ejemplo 1", "Ejemplo subtitulo"),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    /*Text(
+                      "Extras",
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),*/
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 20,
+                      ),
+                      child: Container(
+                        height: 270,
+                        child: GridView.count(
+                          crossAxisCount: 1,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 25,
+                          childAspectRatio: 1.30,
+                          children: [
+                            _selectedExtras(
+                                "assets/images/comanda.png", "Generar comanda"),
+                            _selectedExtras(
+                                "assets/images/inventario.png", "Inventario"),
+                            _selectedExtras(
+                                "assets/images/menu.png", "Registrar ménu")
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
