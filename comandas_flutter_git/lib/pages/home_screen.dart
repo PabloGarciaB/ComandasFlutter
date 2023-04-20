@@ -107,16 +107,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: hexStringToColor("D1913C"),
       appBar: AppBar(
-        elevation: 0.0,
         backgroundColor: Colors.transparent,
-        title: Text(
-          "Inicio",
-          style: TextStyle(fontSize: 23),
-        ),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
       ),
-      body: SafeArea(
+      body: Container(
+        height: 800,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: hexStringToColor("FFD194"),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            )),
         child: Padding(
           padding: EdgeInsets.all(12.0),
           child: _currentPage,

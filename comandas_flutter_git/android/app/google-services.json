@@ -29,6 +29,13 @@
             {
               "client_id": "147725350696-ov8om1tpc3eee2ncvmp7k5ofdmg6fc4h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "147725350696-2a44lra02qj91hc3b026q9r17qe50fsb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.comandasFlutterGit"
+              }
             }
           ]
         }
