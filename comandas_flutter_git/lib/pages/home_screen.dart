@@ -6,6 +6,10 @@ import 'package:comandas_flutter_git/pages/menu_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../Productos/productos.dart';
+import '../api/firebase_api.dart';
+import '../model/producto.dart';
 import '../utils/colors_util.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,68 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Widget _selectedOptionNavegar(@required Color color, @required String title,
-      @required String subtitle) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10.0),
-      padding: EdgeInsets.only(left: 20),
-      height: 120,
-      width: 220,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            subtitle,
-            style: TextStyle(
-              fontSize: 19,
-              color: Colors.white70,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _selectedExtras(@required String image, @required String name) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(color: hexStringToColor("D1913C"), width: 3)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 60,
-            decoration:
-                BoxDecoration(image: DecorationImage(image: AssetImage(image))),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            name,
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,7 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         child: Padding(
           padding: EdgeInsets.all(12.0),
-          child: _currentPage,
+          child: StreamBuilder<List<Producto>>(
+            stream: FirebaseApi.readProd(),
+            builder: (context, snapshot) {
+              final productos = snapshot.data;
+              final provider = Provider.of<ProductosProvider>(context);
+              provider.setProd(productos);
+              return _currentPage;
+            },
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

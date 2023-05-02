@@ -1,3 +1,5 @@
+import 'package:comandas_flutter_git/utils/utils.dart';
+
 class ProductoField {
   static const createdTime = 'createdTime';
 }
@@ -22,4 +24,22 @@ class Producto {
     this.id = '',
     this.bandera = false,
   });
+
+  static Producto fromJson(Map<String, dynamic> json) => Producto(
+      createdTime: Utils.toDateTime(json['createdTime']),
+      nombre: json['nombre'],
+      costo: json['costo'],
+      entrada: json['entrada'],
+      salida: json['salida'],
+      //existencia: json['existencia'],
+      id: json['id']);
+
+  Map<String, dynamic> toJson() => {
+        'fechaCreacion': Utils.fromDateTimeToJson(createdTime),
+        'nombre': nombre,
+        'costo': costo,
+        'entrada': entrada,
+        'salida': salida,
+        //'existencia': existencia,
+      };
 }
