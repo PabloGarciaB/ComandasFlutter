@@ -115,8 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
             color: hexStringToColor("FFD194"),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
             )),
         child: Padding(
           padding: EdgeInsets.all(12.0),

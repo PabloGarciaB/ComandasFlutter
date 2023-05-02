@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
+import 'package:comandas_flutter_git/reusable_widget/agregar_producto_widget.dart';
+import 'package:comandas_flutter_git/reusable_widget/lista_productos.dart';
 
 import '../utils/colors_util.dart';
 
@@ -11,30 +13,30 @@ class Inventario extends StatefulWidget {
 }
 
 class _InventarioState extends State<Inventario> {
-  TextEditingController _nombreProd = TextEditingController();
-  TextEditingController _unidadEntra = TextEditingController();
-  TextEditingController _unidadSale = TextEditingController();
-  TextEditingController _unidadExistencia = TextEditingController();
-  TextEditingController _costoUnidad = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
           hexStringToColor("FFD194"),
           hexStringToColor("FFD194")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Text('Titulo'),
-            ],
-          ),
+        child: ProductoListWidget(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
         ),
+        backgroundColor: hexStringToColor('D1913C'),
+        onPressed: () => showDialog(
+            context: context,
+            builder: (context) {
+              return AgregarProductoWidget();
+            },
+            barrierDismissible: false),
+        child: Icon(Icons.add),
       ),
     );
   }
