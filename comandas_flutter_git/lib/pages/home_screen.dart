@@ -1,14 +1,8 @@
 import 'package:comandas_flutter_git/pages/Home.dart';
-import 'package:comandas_flutter_git/pages/bienvenida_login.dart';
 import 'package:comandas_flutter_git/pages/comandas_screen.dart';
 import 'package:comandas_flutter_git/pages/inventario_screen.dart';
 import 'package:comandas_flutter_git/pages/menu_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import '../Productos/productos.dart';
-import '../api/firebase_api.dart';
-import '../model/producto.dart';
 import '../utils/colors_util.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  List _pantallas = [];
+  final List _pantallas = [];
   late Widget _currentPage;
 
   @override
@@ -28,10 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     _pantallas
-      ..add(Home())
-      ..add(Inventario())
-      ..add(Menu())
-      ..add(Comandas());
+      ..add(const Home())
+      ..add(const Inventario())
+      ..add(const Menu())
+      ..add(const Comandas());
 
     _currentPage = Home();
   }

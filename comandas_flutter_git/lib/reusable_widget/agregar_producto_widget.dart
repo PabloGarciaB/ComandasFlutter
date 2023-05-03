@@ -55,7 +55,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
       );
 
   void agregarProducto() {
-    final isValid = _formKey.currentState?.validate();
+    //final isValid = _formKey.currentState?.validate();
     final prod = Producto(
       id: DateTime.now().toString(),
       nombre: nombre,

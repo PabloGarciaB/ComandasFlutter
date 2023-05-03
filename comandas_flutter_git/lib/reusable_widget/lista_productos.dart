@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:comandas_flutter_git/Productos/productos.dart';
 import 'package:comandas_flutter_git/reusable_widget/vistaProducto.dart';
 

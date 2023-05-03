@@ -1,4 +1,3 @@
-import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:flutter/material.dart';
 
 class ProductoFormWidget extends StatelessWidget {
