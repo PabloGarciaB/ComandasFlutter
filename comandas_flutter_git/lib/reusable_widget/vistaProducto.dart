@@ -1,9 +1,12 @@
 import 'package:comandas_flutter_git/utils/colors_util.dart';
+import 'package:comandas_flutter_git/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:comandas_flutter_git/Productos/productos.dart';
+
+import '../pages/editar_producto_page.dart';
 
 class ProductoWidget extends StatelessWidget {
   final Producto producto;
@@ -19,7 +22,7 @@ class ProductoWidget extends StatelessWidget {
           actions: [
             IconSlideAction(
               color: Colors.green,
-              onTap: () {},
+              onTap: () => editProd(context, producto),
               caption: 'Editar',
               icon: Icons.edit,
             )
@@ -28,7 +31,7 @@ class ProductoWidget extends StatelessWidget {
             IconSlideAction(
               icon: Icons.delete,
               color: Colors.red,
-              onTap: () {},
+              onTap: () => deleteProd(context, producto),
               caption: 'Borrar',
             )
           ],
@@ -36,7 +39,9 @@ class ProductoWidget extends StatelessWidget {
         ),
       );
 
-  Widget buildProducto(BuildContext context) => Container(
+  Widget buildProducto(BuildContext context) => GestureDetector(
+      onTap: () => editProd(context, producto),
+      child: Container(
         color: hexStringToColor('FFD194'),
         padding: EdgeInsets.all(20),
         child: Row(
@@ -81,6 +86,20 @@ class ProductoWidget extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ));
+
+  void deleteProd(BuildContext context, Producto producto) {
+    final provider = Provider.of<ProductosProvider>(context, listen: false);
+    provider.removeProd(producto);
+
+    Utils.showSnackBar(context, 'Producto eliminado correctamente');
+  }
+
+  void editProd(BuildContext context, Producto producto) =>
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => EditProdPage(producto: producto),
         ),
       );
 }

@@ -6,7 +6,6 @@ import 'package:comandas_flutter_git/pages/menu_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../Productos/productos.dart';
 import '../api/firebase_api.dart';
 import '../model/producto.dart';
@@ -62,15 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         child: Padding(
           padding: EdgeInsets.all(12.0),
-          child: StreamBuilder<List<Producto>>(
-            stream: FirebaseApi.readProd(),
-            builder: (context, snapshot) {
-              final productos = snapshot.data;
-              final provider = Provider.of<ProductosProvider>(context);
-              provider.setProd(productos);
-              return _currentPage;
-            },
-          ),
+          child: _currentPage,
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
