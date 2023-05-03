@@ -1,4 +1,3 @@
-import 'package:comandas_flutter_git/api/firebase_api.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:flutter/material.dart';
 

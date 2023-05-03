@@ -1,8 +1,4 @@
-import 'package:comandas_flutter_git/Productos/productos.dart';
-import 'package:comandas_flutter_git/api/firebase_api.dart';
-import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:flutter/material.dart';
-import 'package:comandas_flutter_git/reusable_widget/reusable_widget.dart';
 import 'package:comandas_flutter_git/reusable_widget/agregar_producto_widget.dart';
 import 'package:comandas_flutter_git/reusable_widget/lista_productos.dart';
 

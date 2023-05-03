@@ -57,8 +57,6 @@ class _EditProdPageState extends State<EditProdPage> {
       );
 
   void saveProd() {
-    final isValid = _formKey.currentState?.validate();
-
     final provider = Provider.of<ProductosProvider>(context, listen: false);
 
     provider.updateProd(widget.producto, nombre, costo, entrada, salida);
