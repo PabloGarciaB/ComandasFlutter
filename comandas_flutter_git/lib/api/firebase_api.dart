@@ -11,9 +11,9 @@ class FirebaseApi {
     return docProd.id;
   }
 
-  static Stream<List<Producto>> readProd() => FirebaseFirestore.instance
-      .collection('productos')
-      .orderBy(ProductoField.createdTime, descending: true)
-      .snapshots()
-      .transform(Utils.transformer(Producto.fromJson));
+  static Future updateProd(Producto producto) async {
+    final docProd =
+        FirebaseFirestore.instance.collection('productos').doc(producto.id);
+    await docProd.update(producto.toJson());
+  }
 }

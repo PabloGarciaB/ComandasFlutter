@@ -6,6 +6,7 @@ class ProductoFormWidget extends StatelessWidget {
   final String entrada;
   final String salida;
   final String existencia;
+  final String id;
   final ValueChanged<String> onChangedNombre;
   final ValueChanged<String> onChangedCosto;
   final ValueChanged<String> onChangedEntrada;
@@ -19,6 +20,7 @@ class ProductoFormWidget extends StatelessWidget {
       this.entrada = '',
       this.salida = '',
       this.existencia = '',
+      this.id = '',
       required this.onChangedNombre,
       required this.onChangedCosto,
       required this.onChangedEntrada,
@@ -40,6 +42,15 @@ class ProductoFormWidget extends StatelessWidget {
             SizedBox(height: 4),
             buildSalida(),
             SizedBox(height: 4),
+            /*TextFormField(
+              maxLines: 1,
+              initialValue: id,
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Nombre',
+                enabled: false,
+              ),
+            )*/
             //
             //No se muestra el campo pero debe mostrarse como un nuevo campo de la entrada de unidades
             //Cambio pendiente

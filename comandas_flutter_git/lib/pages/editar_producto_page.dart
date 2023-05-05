@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/Productos/productos.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:comandas_flutter_git/reusable_widget/producto_form.dart';
@@ -21,6 +22,7 @@ class _EditProdPageState extends State<EditProdPage> {
   late String entrada;
   late String salida;
   late String existencia;
+  late String id;
 
   @override
   void initState() {
@@ -30,6 +32,7 @@ class _EditProdPageState extends State<EditProdPage> {
     entrada = widget.producto.entrada;
     salida = widget.producto.salida;
     existencia = widget.producto.existencia;
+    id = widget.producto.id;
   }
 
   @override
@@ -50,7 +53,10 @@ class _EditProdPageState extends State<EditProdPage> {
               onChangedSalida: (salida) => setState(() => this.salida = salida),
               onChangedExistencia: (existencia) =>
                   setState(() => this.existencia = existencia),
-              onGuardarProducto: saveProd,
+              onGuardarProducto: () {
+                final updateProd =
+                    FirebaseFirestore.instance.collection('productos').doc();
+              },
             ),
           ),
         ),
