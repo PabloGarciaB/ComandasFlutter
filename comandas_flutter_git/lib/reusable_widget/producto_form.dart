@@ -11,7 +11,7 @@ class ProductoFormWidget extends StatelessWidget {
   final ValueChanged<String> onChangedCosto;
   final ValueChanged<String> onChangedEntrada;
   final ValueChanged<String> onChangedSalida;
-  final ValueChanged<String> onChangedExistencia;
+  //final ValueChanged<String> onChangedExistencia;
   final VoidCallback onGuardarProducto;
 
   const ProductoFormWidget(
@@ -25,7 +25,7 @@ class ProductoFormWidget extends StatelessWidget {
       required this.onChangedCosto,
       required this.onChangedEntrada,
       required this.onChangedSalida,
-      required this.onChangedExistencia,
+      //required this.onChangedExistencia,
       required this.onGuardarProducto,
       super.key});
 
@@ -107,7 +107,7 @@ class ProductoFormWidget extends StatelessWidget {
   Widget buildExistencia() => TextFormField(
         maxLines: 1,
         initialValue: existencia,
-        onChanged: onChangedExistencia,
+        onChanged: (value) {},
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Existencia de unidades',

@@ -24,11 +24,7 @@ class ProductosProvider extends ChangeNotifier {
 
   void agregarProducto(Producto producto) => FirebaseApi.createProd(producto);
 
-  void removeProd(Producto producto) {
-    _productos.remove(producto);
-
-    notifyListeners();
-  }
+  void removeProd(Producto producto) => FirebaseApi.deleteProd(producto);
 
   void updateProd(
     Producto producto,

@@ -14,6 +14,13 @@ class FirebaseApi {
   static Future updateProd(Producto producto) async {
     final docProd =
         FirebaseFirestore.instance.collection('productos').doc(producto.id);
-    await docProd.update(producto.toJson());
+    docProd.update(producto.toJson());
+  }
+
+  static Future deleteProd(Producto producto) async {
+    final docProd =
+        FirebaseFirestore.instance.collection('productos').doc(producto.id);
+
+    await docProd.delete();
   }
 }

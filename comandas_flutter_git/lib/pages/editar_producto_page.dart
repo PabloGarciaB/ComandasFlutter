@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/Productos/productos.dart';
+import 'package:comandas_flutter_git/api/firebase_api.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:comandas_flutter_git/reusable_widget/producto_form.dart';
 import 'package:flutter/material.dart';
@@ -37,30 +38,58 @@ class _EditProdPageState extends State<EditProdPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: ProductoFormWidget(
-              nombre: nombre,
-              costo: costo,
-              entrada: entrada,
-              salida: salida,
-              onChangedNombre: (nombre) => setState(() => this.nombre = nombre),
-              onChangedCosto: (costo) => setState(() => this.costo = costo),
-              onChangedEntrada: (entrada) =>
-                  setState(() => this.entrada = entrada),
-              onChangedSalida: (salida) => setState(() => this.salida = salida),
-              onChangedExistencia: (existencia) =>
-                  setState(() => this.existencia = existencia),
-              onGuardarProducto: () {
-                final updateProd =
-                    FirebaseFirestore.instance.collection('productos').doc();
-              },
-            ),
-          ),
-        ),
-      );
+      body: StreamBuilder(
+          stream:
+              FirebaseFirestore.instance.collection('productos').snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasData) {
+              return Container(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.all(16),
+                  children: snapshot.data!.docs.map((snap) {
+                    var a = Producto(
+                      createdTime: snap["fechaCreacion"].toDate(),
+                      nombre: snap["nombre"],
+                      costo: snap["costo"],
+                      entrada: snap["entrada"],
+                      salida: snap["salida"],
+                      id: snap.id,
+                    );
+                    return ProductoFormWidget(
+                      nombre: nombre,
+                      costo: costo,
+                      entrada: entrada,
+                      salida: salida,
+                      id: snap.id,
+                      onChangedNombre: (nombre) =>
+                          setState(() => this.nombre = nombre),
+                      onChangedCosto: (costo) =>
+                          setState(() => this.costo = costo),
+                      onChangedEntrada: (entrada) =>
+                          setState(() => this.entrada = entrada),
+                      onChangedSalida: (salida) =>
+                          setState(() => this.salida = salida),
+                      // onChangedExistencia: (existencia) =>
+                      //setState(() => this.existencia = existencia),
+                      onGuardarProducto: () async {
+                        await FirebaseFirestore.instance
+                            .collection('productos')
+                            .doc(a.id)
+                            .update(a.toJson());
+                      },
+                    );
+                  }).toList(),
+                  //child: Form(
+                  //key: _formKey,
+                  //),
+                ),
+              );
+            } else {
+              return Container();
+            }
+          }));
 
   void saveProd() {
     final provider = Provider.of<ProductosProvider>(context, listen: false);

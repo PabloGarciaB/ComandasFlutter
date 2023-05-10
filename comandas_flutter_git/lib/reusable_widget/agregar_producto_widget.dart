@@ -45,8 +45,8 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                     setState(() => this.entrada = entrada),
                 onChangedSalida: (salida) =>
                     setState(() => this.salida = salida),
-                onChangedExistencia: (existencia) =>
-                    setState(() => this.existencia = existencia),
+                // onChangedExistencia: (existencia) =>
+                //setState(() => this.existencia = existencia),
                 onGuardarProducto: agregarProducto,
               ),
             ],
