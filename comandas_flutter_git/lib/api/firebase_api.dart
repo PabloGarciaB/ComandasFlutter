@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
-import 'package:comandas_flutter_git/utils/utils.dart';
 
 class FirebaseApi {
   static Future<String> createProd(Producto producto) async {
@@ -11,10 +10,13 @@ class FirebaseApi {
     return docProd.id;
   }
 
-  static Future updateProd(Producto producto) async {
-    final docProd =
-        FirebaseFirestore.instance.collection('productos').doc(producto.id);
-    docProd.update(producto.toJson());
+  static Future<void> updateProd(Producto producto) {
+    return FirebaseFirestore.instance
+        .collection('productos')
+        .doc(producto.id)
+        .update(producto.toJson())
+        .then((value) => print('Producto actualizado'))
+        .catchError((error) => print("$error"));
   }
 
   static Future deleteProd(Producto producto) async {

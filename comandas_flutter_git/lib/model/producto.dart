@@ -1,12 +1,7 @@
 import 'package:comandas_flutter_git/utils/utils.dart';
-import 'package:flutter/cupertino.dart';
-
-class ProductoField {
-  static const createdTime = 'createdTime';
-}
 
 class Producto {
-  DateTime createdTime;
+  //DateTime createdTime;
   String nombre;
   String costo;
   String entrada;
@@ -16,7 +11,7 @@ class Producto {
   bool bandera;
 
   Producto({
-    required this.createdTime,
+    //required this.createdTime,
     required this.nombre,
     this.costo = '',
     this.entrada = '',
@@ -27,7 +22,6 @@ class Producto {
   });
 
   static Producto fromJson(Map<String, dynamic> json) => Producto(
-      createdTime: Utils.toDateTime(json['createdTime']),
       nombre: json['nombre'],
       costo: json['costo'],
       entrada: json['entrada'],
@@ -36,7 +30,6 @@ class Producto {
       id: json['id']);
 
   Map<String, dynamic> toJson() => {
-        'fechaCreacion': Utils.fromDateTimeToJson(createdTime),
         'nombre': nombre,
         'costo': costo,
         'entrada': entrada,

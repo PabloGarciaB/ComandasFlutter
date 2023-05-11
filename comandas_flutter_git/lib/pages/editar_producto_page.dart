@@ -50,7 +50,7 @@ class _EditProdPageState extends State<EditProdPage> {
                   padding: EdgeInsets.all(16),
                   children: snapshot.data!.docs.map((snap) {
                     var a = Producto(
-                      createdTime: snap["fechaCreacion"].toDate(),
+                      //createdTime: snap["fechaCreacion"].toDate(),
                       nombre: snap["nombre"],
                       costo: snap["costo"],
                       entrada: snap["entrada"],
@@ -62,7 +62,7 @@ class _EditProdPageState extends State<EditProdPage> {
                       costo: costo,
                       entrada: entrada,
                       salida: salida,
-                      id: snap.id,
+                      //id: snap.id,
                       onChangedNombre: (nombre) =>
                           setState(() => this.nombre = nombre),
                       onChangedCosto: (costo) =>
@@ -73,11 +73,9 @@ class _EditProdPageState extends State<EditProdPage> {
                           setState(() => this.salida = salida),
                       // onChangedExistencia: (existencia) =>
                       //setState(() => this.existencia = existencia),
-                      onGuardarProducto: () async {
-                        await FirebaseFirestore.instance
-                            .collection('productos')
-                            .doc(a.id)
-                            .update(a.toJson());
+                      onGuardarProducto: () {
+                        FirebaseApi.updateProd(a);
+                        Navigator.of(context).pop();
                       },
                     );
                   }).toList(),
@@ -94,8 +92,20 @@ class _EditProdPageState extends State<EditProdPage> {
   void saveProd() {
     final provider = Provider.of<ProductosProvider>(context, listen: false);
 
-    provider.updateProd(widget.producto, nombre, costo, entrada, salida);
+    provider.updateProd(widget.producto, nombre, costo, entrada, salida, id);
 
     Navigator.of(context).pop();
+  }
+
+  Future<void> updateString() {
+    return FirebaseFirestore.instance
+        .collection('productos')
+        .doc("g4TYrQBlloFWFxxjGuum")
+        .update({
+      "nombre": "nombreP",
+      "costo": "costoP",
+      "entrada": "entradaP",
+      "salida": "salidaP"
+    });
   }
 }

@@ -18,6 +18,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
   String entrada = '';
   String salida = '';
   String existencia = '';
+  String id = '';
 
   @override
   Widget build(BuildContext context) => AlertDialog(
@@ -47,6 +48,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                     setState(() => this.salida = salida),
                 // onChangedExistencia: (existencia) =>
                 //setState(() => this.existencia = existencia),
+                //onChangedId: (id) => setState(() => this.id = id),
                 onGuardarProducto: agregarProducto,
               ),
             ],
@@ -62,7 +64,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
       costo: costo,
       entrada: entrada,
       salida: salida,
-      createdTime: DateTime.now(),
+      //createdTime: DateTime.now(),
     );
 
     final provider = Provider.of<ProductosProvider>(context, listen: false);

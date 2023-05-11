@@ -6,11 +6,12 @@ class ProductoFormWidget extends StatelessWidget {
   final String entrada;
   final String salida;
   final String existencia;
-  final String id;
+  // final String id;
   final ValueChanged<String> onChangedNombre;
   final ValueChanged<String> onChangedCosto;
   final ValueChanged<String> onChangedEntrada;
   final ValueChanged<String> onChangedSalida;
+  //final ValueChanged<String> onChangedId;
   //final ValueChanged<String> onChangedExistencia;
   final VoidCallback onGuardarProducto;
 
@@ -20,13 +21,14 @@ class ProductoFormWidget extends StatelessWidget {
       this.entrada = '',
       this.salida = '',
       this.existencia = '',
-      this.id = '',
+      //this.id = '',
       required this.onChangedNombre,
       required this.onChangedCosto,
       required this.onChangedEntrada,
       required this.onChangedSalida,
       //required this.onChangedExistencia,
       required this.onGuardarProducto,
+      //required this.onChangedId,
       super.key});
 
   @override
@@ -42,6 +44,7 @@ class ProductoFormWidget extends StatelessWidget {
             SizedBox(height: 4),
             buildSalida(),
             SizedBox(height: 4),
+            // buildId(),
             /*TextFormField(
               maxLines: 1,
               initialValue: id,
@@ -76,6 +79,16 @@ class ProductoFormWidget extends StatelessWidget {
           labelText: 'Nombre',
         ),
       );
+  /* Widget buildId() => TextFormField(
+        maxLines: 1,
+        initialValue: id,
+        enabled: false,
+        onChanged: onChangedId,
+        decoration: InputDecoration(
+          border: UnderlineInputBorder(),
+          labelText: 'Id',
+        ),
+      );*/
 
   Widget buildCosto() => TextFormField(
         maxLines: 1,
