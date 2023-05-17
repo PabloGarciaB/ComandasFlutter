@@ -1,4 +1,8 @@
+import 'package:comandas_flutter_git/reusable_widget/lista_menu.dart';
+import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:flutter/material.dart';
+
+import '../reusable_widget/agregar_menu_widget.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -10,6 +14,29 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              hexStringToColor("FFD194"),
+              hexStringToColor("FFD194")
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          ),
+          child: MenuListWidget(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: hexStringToColor('D1913C'),
+          onPressed: () => showDialog(
+              context: context,
+              builder: (context) {
+                return AgregarMenuWidget();
+              },
+              barrierDismissible: false),
+          child: Icon(Icons.add),
+        ));
   }
 }

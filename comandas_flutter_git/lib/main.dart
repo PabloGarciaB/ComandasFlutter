@@ -1,4 +1,5 @@
 import 'package:comandas_flutter_git/Provider/productos.dart';
+import 'package:comandas_flutter_git/pages/bienvenida_login.dart';
 import 'package:comandas_flutter_git/pages/home_screen.dart';
 import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: hexStringToColor('FFD194')),
             useMaterial3: true,
           ),
-          home: const HomeScreen(),
+          home: const WelcomeScreen(),
         ),
       );
 }

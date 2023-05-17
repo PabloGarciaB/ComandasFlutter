@@ -1,16 +1,40 @@
 import 'package:comandas_flutter_git/model/producto.dart';
+import 'package:comandas_flutter_git/model/menu.dart';
 import 'package:flutter/material.dart';
 
 import '../api/firebase_api.dart';
+import '../model/menu.dart';
 
 class ProductosProvider extends ChangeNotifier {
   List<Producto> _productos = [];
 
+  List<MenuPlatillo> _platillo = [];
+
   List<Producto> get productos =>
       _productos.where((productos) => productos.bandera == false).toList();
 
+  List<MenuPlatillo> get menu =>
+      _platillo.where((menu) => menu.bander == false).toList();
+
   void agregarProd(Producto prod) {
     _productos.add(prod);
+    notifyListeners();
+  }
+
+  void addPlatillo(MenuPlatillo platillo) {
+    _platillo.add(platillo);
+    notifyListeners();
+  }
+
+  void deletePlatillo(MenuPlatillo platillo) {
+    _platillo.remove(platillo);
+    notifyListeners();
+  }
+
+  void updatePlatillo(
+      MenuPlatillo platillo, String nombre, String descripcion) {
+    platillo.nombrePlatillo = nombre;
+    platillo.descripcionPlatillo = descripcion;
     notifyListeners();
   }
 

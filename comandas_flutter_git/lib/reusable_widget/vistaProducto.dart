@@ -42,7 +42,7 @@ class ProductoWidget extends StatelessWidget {
   Widget buildProducto(BuildContext context) => GestureDetector(
       onTap: () => editProd(context, producto),
       child: Container(
-        color: hexStringToColor('FFD194'),
+        color: hexStringToColor('#fac055'),
         padding: EdgeInsets.all(20),
         child: Row(
           children: [
