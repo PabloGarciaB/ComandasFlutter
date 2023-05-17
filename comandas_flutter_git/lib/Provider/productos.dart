@@ -6,9 +6,71 @@ import '../api/firebase_api.dart';
 import '../model/menu.dart';
 
 class ProductosProvider extends ChangeNotifier {
-  List<Producto> _productos = [];
+  final List<Producto> _productos = [
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25')
+  ];
 
-  List<MenuPlatillo> _platillo = [];
+  final List<MenuPlatillo> _platillo = [
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+  ];
 
   List<Producto> get productos =>
       _productos.where((productos) => productos.bandera == false).toList();

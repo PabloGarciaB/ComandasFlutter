@@ -42,7 +42,7 @@ class _EditProdPageState extends State<EditProdPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Editar articulo'),
+          title: const Text('Editar articulo'),
           backgroundColor: hexStringToColor("D1913C"),
           actions: [
             IconButton(
@@ -51,14 +51,14 @@ class _EditProdPageState extends State<EditProdPage> {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: Text("Eliminar articulo"),
-                          content: Text("¿Quiere eliminar el articulo?"),
+                          title: const Text("Eliminar articulo"),
+                          content: const Text("¿Quiere eliminar el articulo?"),
                           actions: [
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('No')),
+                                child: const Text('No')),
                             TextButton(
                                 onPressed: () {
                                   final provider =
@@ -72,12 +72,12 @@ class _EditProdPageState extends State<EditProdPage> {
                                             const HomeScreen(),
                                       ));
                                 },
-                                child: Text("Si"))
+                                child: const Text("Si"))
                           ],
                         );
                       });
                 },
-                icon: Icon((Icons.delete)))
+                icon: const Icon((Icons.delete)))
           ],
         ),
         body: Container(

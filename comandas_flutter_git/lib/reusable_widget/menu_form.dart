@@ -21,9 +21,9 @@ class MenuFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             buildNombre(),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             buildDescripcion(),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             buildGuardarPlatilloButton(),
           ],
         ),
@@ -39,7 +39,7 @@ class MenuFormWidget extends StatelessWidget {
           }
           return null;
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Nombre del platillo',
         ),
@@ -55,7 +55,7 @@ class MenuFormWidget extends StatelessWidget {
           }
           return null;
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Descripcion del platillo',
         ),
@@ -70,7 +70,7 @@ class MenuFormWidget extends StatelessWidget {
             ),
           ),
           onPressed: onGuardarPlatillo,
-          child: Text('Guardar'),
+          child: const Text('Guardar'),
         ),
       );
 }

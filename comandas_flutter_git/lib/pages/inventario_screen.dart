@@ -38,10 +38,10 @@ class _InventarioState extends State<Inventario> {
           onPressed: () => showDialog(
               context: context,
               builder: (context) {
-                return AgregarProductoWidget();
+                return const AgregarProductoWidget();
               },
               barrierDismissible: false),
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ));
   }
 }

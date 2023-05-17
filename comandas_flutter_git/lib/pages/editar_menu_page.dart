@@ -1,5 +1,5 @@
 import 'package:comandas_flutter_git/model/menu.dart';
-import 'package:comandas_flutter_git/pages/menu_screen.dart';
+import 'package:comandas_flutter_git/pages/home_screen.dart';
 import 'package:comandas_flutter_git/reusable_widget/menu_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +29,7 @@ class _EditPlatPageState extends State<EditPlatPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Editar articulo'),
+          title: const Text('Editar articulo'),
           backgroundColor: hexStringToColor("FFFFFF"),
           actions: [
             IconButton(
@@ -38,14 +38,14 @@ class _EditPlatPageState extends State<EditPlatPage> {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: Text("Eliminar articulo"),
-                          content: Text("¿Quiere eliminar el articulo?"),
+                          title: const Text("Eliminar articulo"),
+                          content: const Text("¿Quiere eliminar el articulo?"),
                           actions: [
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('No')),
+                                child: const Text('No')),
                             TextButton(
                                 onPressed: () {
                                   final provider =
@@ -55,10 +55,11 @@ class _EditPlatPageState extends State<EditPlatPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const Menu(),
+                                        builder: (context) =>
+                                            const HomeScreen(),
                                       ));
                                 },
-                                child: Text("Si"))
+                                child: const Text("Si"))
                           ],
                         );
                       });

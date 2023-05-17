@@ -12,7 +12,7 @@ class AgregarProductoWidget extends StatefulWidget {
 }
 
 class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
-  final _formKey = GlobalKey<FormState>();
+  //final _formKey = GlobalKey<FormState>();
   String nombre = '';
   String costo = '';
   String entrada = '';
@@ -26,7 +26,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Agregar nuevo producto',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,

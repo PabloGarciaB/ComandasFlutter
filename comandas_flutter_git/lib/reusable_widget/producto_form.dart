@@ -37,13 +37,13 @@ class ProductoFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             buildTitle(),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildCosto(),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildEntrada(),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildSalida(),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             // buildId(),
             /*TextFormField(
               maxLines: 1,
@@ -58,7 +58,7 @@ class ProductoFormWidget extends StatelessWidget {
             //No se muestra el campo pero debe mostrarse como un nuevo campo de la entrada de unidades
             //Cambio pendiente
             //buildExistencia(),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             buildGuardarProductoButton(),
           ],
         ),
@@ -74,7 +74,7 @@ class ProductoFormWidget extends StatelessWidget {
           }
           return null;
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Nombre',
         ),
@@ -94,7 +94,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: costo,
         onChanged: onChangedCosto,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Precio',
         ),
@@ -103,7 +103,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: entrada,
         onChanged: onChangedEntrada,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Entrada de unidades',
         ),
@@ -112,7 +112,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: salida,
         onChanged: onChangedSalida,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Salida de unidades',
         ),
@@ -121,7 +121,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: null, //existencia//,
         onChanged: (value) {},
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Existencia de unidades',
         ),
@@ -136,7 +136,7 @@ class ProductoFormWidget extends StatelessWidget {
             ),
           ),
           onPressed: onGuardarProducto,
-          child: Text('Guardar'),
+          child: const Text('Guardar'),
         ),
       );
 
@@ -149,7 +149,7 @@ class ProductoFormWidget extends StatelessWidget {
             ),
           ),
           onPressed: onGuardarProducto,
-          child: Text('Guardar'),
+          child: const Text('Guardar'),
         ),
       );
 }

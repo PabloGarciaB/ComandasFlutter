@@ -23,7 +23,7 @@ class _MenuState extends State<Menu> {
               hexStringToColor("FFD194")
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),
-          child: MenuListWidget(),
+          child: const MenuListWidget(),
         ),
         floatingActionButton: FloatingActionButton(
           shape: RoundedRectangleBorder(
@@ -33,10 +33,10 @@ class _MenuState extends State<Menu> {
           onPressed: () => showDialog(
               context: context,
               builder: (context) {
-                return AgregarMenuWidget();
+                return const AgregarMenuWidget();
               },
               barrierDismissible: false),
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ));
   }
 }

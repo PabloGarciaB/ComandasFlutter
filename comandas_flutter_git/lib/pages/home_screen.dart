@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ..add(const Menu())
       ..add(const Comandas());
 
-    _currentPage = Inventario();
+    _currentPage = const Inventario();
   }
 
   void _changePage(int selectedIndex) {
@@ -49,12 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
         width: double.infinity,
         decoration: BoxDecoration(
             color: hexStringToColor("FFD194"),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
             )),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: _currentPage,
         ),
       ),

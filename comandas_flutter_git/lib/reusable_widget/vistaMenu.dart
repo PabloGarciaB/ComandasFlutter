@@ -15,7 +15,7 @@ class MenuWidget extends StatelessWidget {
   Widget build(BuildContext context) => ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Slidable(
-          actionPane: SlidableDrawerActionPane(),
+          actionPane: const SlidableDrawerActionPane(),
           key: Key(menu.idPlatillo),
           actions: [
             IconSlideAction(
@@ -40,7 +40,7 @@ class MenuWidget extends StatelessWidget {
   Widget buildMenu(BuildContext context) => GestureDetector(
         onTap: () => editPlat(context, menu),
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Row(
             children: [
               Expanded(
@@ -49,7 +49,7 @@ class MenuWidget extends StatelessWidget {
                   children: [
                     Text(
                       menu.nombrePlatillo,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                         fontSize: 22,
@@ -57,10 +57,10 @@ class MenuWidget extends StatelessWidget {
                     ),
                     if (menu.descripcionPlatillo.isNotEmpty)
                       Container(
-                        margin: EdgeInsets.only(top: 4),
+                        margin: const EdgeInsets.only(top: 4),
                         child: Text(
                           menu.descripcionPlatillo,
-                          style: TextStyle(fontSize: 12, height: 1.5),
+                          style: const TextStyle(fontSize: 12, height: 1.5),
                         ),
                       ),
                   ],

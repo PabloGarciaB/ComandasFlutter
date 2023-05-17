@@ -6,6 +6,8 @@ import 'package:comandas_flutter_git/reusable_widget/vistaProducto.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 
 class ProductoListWidget extends StatefulWidget {
+  const ProductoListWidget({super.key});
+
   @override
   State<ProductoListWidget> createState() => _ProductoListWidgetState();
 }
@@ -17,15 +19,15 @@ class _ProductoListWidgetState extends State<ProductoListWidget> {
     final listaproductos = provider.productos;
 
     return listaproductos.isEmpty
-        ? Center(
+        ? const Center(
             child: Text(
               'Sin registros por mostrar',
               style: TextStyle(fontSize: 20),
             ),
           )
         : ListView.separated(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.all(16),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(16),
             separatorBuilder: (context, index) => Container(
               height: 8,
             ),

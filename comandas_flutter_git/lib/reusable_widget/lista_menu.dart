@@ -5,6 +5,8 @@ import 'package:comandas_flutter_git/model/menu.dart';
 import 'package:comandas_flutter_git/Provider/productos.dart';
 
 class MenuListWidget extends StatefulWidget {
+  const MenuListWidget({super.key});
+
   @override
   State<MenuListWidget> createState() => _MenuListWidgetState();
 }
@@ -16,15 +18,15 @@ class _MenuListWidgetState extends State<MenuListWidget> {
     final platillos = provider.menu;
 
     return platillos.isEmpty
-        ? Center(
+        ? const Center(
             child: Text(
               'Tus platillos se mostraran aqui',
               style: TextStyle(fontSize: 20),
             ),
           )
         : ListView.separated(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.all(16),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(16),
             separatorBuilder: (context, index) => Container(
               height: 8,
             ),

@@ -21,11 +21,11 @@ class _AgregarMenuWidgetState extends State<AgregarMenuWidget> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Agregar platillo',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             MenuFormWidget(
               onChangedNombreP: (nombrePlatillo) => setState(
                 () => this.nombrePlatillo = nombrePlatillo,

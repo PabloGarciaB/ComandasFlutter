@@ -1,5 +1,3 @@
-import 'package:comandas_flutter_git/utils/utils.dart';
-
 class ProductoField {
   static const createdTime = 'createdTime';
 }
