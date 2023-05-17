@@ -1,4 +1,4 @@
-import 'package:comandas_flutter_git/Productos/productos.dart';
+import 'package:comandas_flutter_git/Provider/productos.dart';
 import 'package:comandas_flutter_git/pages/home_screen.dart';
 import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:flutter/material.dart';

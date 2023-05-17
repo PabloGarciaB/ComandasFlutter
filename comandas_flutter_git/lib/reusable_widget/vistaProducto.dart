@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:comandas_flutter_git/Productos/productos.dart';
+import 'package:comandas_flutter_git/Provider/productos.dart';
 
 import '../pages/editar_producto_page.dart';
 

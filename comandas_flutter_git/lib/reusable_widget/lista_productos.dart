@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:comandas_flutter_git/Productos/productos.dart';
+import 'package:comandas_flutter_git/Provider/productos.dart';
 import 'package:comandas_flutter_git/reusable_widget/vistaProducto.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 
