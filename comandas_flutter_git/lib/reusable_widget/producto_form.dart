@@ -5,7 +5,7 @@ class ProductoFormWidget extends StatelessWidget {
   final String costo;
   final String entrada;
   final String salida;
-  final String existencia;
+  //final String existencia;
   // final String id;
   final ValueChanged<String> onChangedNombre;
   final ValueChanged<String> onChangedCosto;
@@ -20,7 +20,7 @@ class ProductoFormWidget extends StatelessWidget {
       this.costo = '',
       this.entrada = '',
       this.salida = '',
-      this.existencia = '',
+      // this.existencia = '',
       //this.id = '',
       required this.onChangedNombre,
       required this.onChangedCosto,
@@ -37,13 +37,13 @@ class ProductoFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             buildTitle(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             buildCosto(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             buildEntrada(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             buildSalida(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             // buildId(),
             /*TextFormField(
               maxLines: 1,
@@ -58,7 +58,7 @@ class ProductoFormWidget extends StatelessWidget {
             //No se muestra el campo pero debe mostrarse como un nuevo campo de la entrada de unidades
             //Cambio pendiente
             //buildExistencia(),
-            SizedBox(height: 4),
+            SizedBox(height: 8),
             buildGuardarProductoButton(),
           ],
         ),
@@ -119,7 +119,7 @@ class ProductoFormWidget extends StatelessWidget {
       );
   Widget buildExistencia() => TextFormField(
         maxLines: 1,
-        initialValue: existencia,
+        initialValue: null, //existencia//,
         onChanged: (value) {},
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
@@ -127,13 +127,29 @@ class ProductoFormWidget extends StatelessWidget {
         ),
       );
 
-  Widget buildGuardarProductoButton() => ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            Colors.white,
+  Widget buildGuardarProductoButton() => SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+              Colors.white,
+            ),
           ),
+          onPressed: onGuardarProducto,
+          child: Text('Guardar'),
         ),
-        onPressed: onGuardarProducto,
-        child: Text('Guardar'),
+      );
+
+  Widget buildBorrarProductoButton() => SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+              Colors.white,
+            ),
+          ),
+          onPressed: onGuardarProducto,
+          child: Text('Guardar'),
+        ),
       );
 }

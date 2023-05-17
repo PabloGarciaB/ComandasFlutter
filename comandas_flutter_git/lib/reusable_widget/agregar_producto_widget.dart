@@ -17,13 +17,11 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
   String costo = '';
   String entrada = '';
   String salida = '';
-  String existencia = '';
-  String id = '';
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-        content: Form(
-          key: _formKey,
+        content: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,18 +37,17 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                 height: 2,
               ),
               ProductoFormWidget(
-                onChangedNombre: (nombre) =>
-                    setState(() => this.nombre = nombre),
-                onChangedCosto: (costo) => setState(() => this.costo = costo),
-                onChangedEntrada: (entrada) =>
-                    setState(() => this.entrada = entrada),
-                onChangedSalida: (salida) =>
-                    setState(() => this.salida = salida),
-                // onChangedExistencia: (existencia) =>
-                //setState(() => this.existencia = existencia),
-                //onChangedId: (id) => setState(() => this.id = id),
-                onGuardarProducto: agregarProducto,
-              ),
+                  onChangedNombre: (nombre) =>
+                      setState(() => this.nombre = nombre),
+                  onChangedCosto: (costo) => setState(() => this.costo = costo),
+                  onChangedEntrada: (entrada) =>
+                      setState(() => this.entrada = entrada),
+                  onChangedSalida: (salida) =>
+                      setState(() => this.salida = salida),
+                  // onChangedExistencia: (existencia) =>
+                  //setState(() => this.existencia = existencia),
+                  //onChangedId: (id) => setState(() => this.id = id),
+                  onGuardarProducto: agregarProducto),
             ],
           ),
         ),
@@ -58,17 +55,18 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
 
   void agregarProducto() {
     //final isValid = _formKey.currentState?.validate();
+
     final prod = Producto(
       id: DateTime.now().toString(),
       nombre: nombre,
       costo: costo,
       entrada: entrada,
       salida: salida,
-      //createdTime: DateTime.now(),
+      createdTime: DateTime.now(),
     );
 
     final provider = Provider.of<ProductosProvider>(context, listen: false);
-    provider.agregarProducto(prod);
+    provider.agregarProd(prod);
     Navigator.of(context).pop();
   }
 }

@@ -19,37 +19,21 @@ class _ProductoListWidgetState extends State<ProductoListWidget> {
     return listaproductos.isEmpty
         ? Center(
             child: Text(
-              'No hay registro por mostrar',
+              'Sin registros por mostrar',
               style: TextStyle(fontSize: 20),
             ),
           )
-        : StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('productos').snapshots(),
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasData) {
-                return Container(
-                  child: ListView(
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.all(16),
-                    children: snapshot.data!.docs.map((snap) {
-                      var a = Producto(
-                        // createdTime: snap["fechaCreacion"].toDate(),
-                        nombre: snap["nombre"],
-                        costo: snap["costo"],
-                        entrada: snap["entrada"],
-                        salida: snap["salida"],
-                      );
-                      return ProductoWidget(
-                        producto: a,
-                      );
-                    }).toList(),
-                  ),
-                );
-              } else {
-                return Container();
-              }
-            });
+        : ListView.separated(
+            physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.all(16),
+            separatorBuilder: (context, index) => Container(
+              height: 8,
+            ),
+            itemCount: listaproductos.length,
+            itemBuilder: (context, index) {
+              final producto = listaproductos[index];
+              return ProductoWidget(producto: producto);
+            },
+          );
   }
 }

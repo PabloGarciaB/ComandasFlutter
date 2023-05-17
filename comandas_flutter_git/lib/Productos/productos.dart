@@ -4,20 +4,31 @@ import 'package:flutter/material.dart';
 import '../api/firebase_api.dart';
 
 class ProductosProvider extends ChangeNotifier {
-  List<Producto> _productos = [
-    Producto(
-        //createdTime: DateTime.now(),
-        nombre: 'Producto 1 Hardcoded',
-        costo: 'Costo: 35',
-        entrada: 'Entrada: 25',
-        salida: 'Salida: 0',
-        id: 'g4TYrQBlloFWFxxjGuum'),
-  ];
+  List<Producto> _productos = [];
 
   List<Producto> get productos =>
       _productos.where((productos) => productos.bandera == false).toList();
 
-  void displayProd(List<Producto> productos) =>
+  void agregarProd(Producto prod) {
+    _productos.add(prod);
+    notifyListeners();
+  }
+
+  void removeProd(Producto prod) {
+    _productos.remove(prod);
+    notifyListeners();
+  }
+
+  void updateProd(Producto prod, String nombre, String costo, String entrada,
+      String salida) {
+    prod.nombre = nombre;
+    prod.costo = costo;
+    prod.entrada = entrada;
+    prod.salida = salida;
+    notifyListeners();
+  }
+
+  /* void displayProd(List<Producto> productos) =>
       WidgetsBinding.instance.addPostFrameCallback((_) {
         productos = _productos;
         notifyListeners();
@@ -36,5 +47,5 @@ class ProductosProvider extends ChangeNotifier {
     producto.id = id;
 
     FirebaseApi.updateProd(producto);
-  }
+  }*/
 }

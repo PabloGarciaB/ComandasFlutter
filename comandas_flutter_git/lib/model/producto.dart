@@ -1,7 +1,11 @@
 import 'package:comandas_flutter_git/utils/utils.dart';
 
+class ProductoField {
+  static const createdTime = 'createdTime';
+}
+
 class Producto {
-  //DateTime createdTime;
+  DateTime createdTime;
   String nombre;
   String costo;
   String entrada;
@@ -11,7 +15,7 @@ class Producto {
   bool bandera;
 
   Producto({
-    //required this.createdTime,
+    required this.createdTime,
     required this.nombre,
     this.costo = '',
     this.entrada = '',
@@ -21,7 +25,7 @@ class Producto {
     this.bandera = false,
   });
 
-  static Producto fromJson(Map<String, dynamic> json) => Producto(
+  /* static Producto fromJson(Map<String, dynamic> json) => Producto(
       nombre: json['nombre'],
       costo: json['costo'],
       entrada: json['entrada'],
@@ -35,5 +39,5 @@ class Producto {
         'entrada': entrada,
         'salida': salida,
         //'existencia': existencia,
-      };
+      };*/
 }

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 
-class FirebaseApi {
+/*class FirebaseApi {
   static Future<String> createProd(Producto producto) async {
     final docProd = FirebaseFirestore.instance.collection('productos').doc();
     producto.id = docProd.id;
@@ -25,4 +25,4 @@ class FirebaseApi {
 
     await docProd.delete();
   }
-}
+}*/
