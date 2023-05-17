@@ -5,12 +5,14 @@ class ProductoFormWidget extends StatelessWidget {
   final String costo;
   final String entrada;
   final String salida;
-  final String existencia;
+  //final String existencia;
+  // final String id;
   final ValueChanged<String> onChangedNombre;
   final ValueChanged<String> onChangedCosto;
   final ValueChanged<String> onChangedEntrada;
   final ValueChanged<String> onChangedSalida;
-  final ValueChanged<String> onChangedExistencia;
+  //final ValueChanged<String> onChangedId;
+  //final ValueChanged<String> onChangedExistencia;
   final VoidCallback onGuardarProducto;
 
   const ProductoFormWidget(
@@ -18,13 +20,15 @@ class ProductoFormWidget extends StatelessWidget {
       this.costo = '',
       this.entrada = '',
       this.salida = '',
-      this.existencia = '',
+      // this.existencia = '',
+      //this.id = '',
       required this.onChangedNombre,
       required this.onChangedCosto,
       required this.onChangedEntrada,
       required this.onChangedSalida,
-      required this.onChangedExistencia,
+      //required this.onChangedExistencia,
       required this.onGuardarProducto,
+      //required this.onChangedId,
       super.key});
 
   @override
@@ -33,18 +37,28 @@ class ProductoFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             buildTitle(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             buildCosto(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             buildEntrada(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
             buildSalida(),
-            SizedBox(height: 4),
+            SizedBox(height: 16),
+            // buildId(),
+            /*TextFormField(
+              maxLines: 1,
+              initialValue: id,
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Nombre',
+                enabled: false,
+              ),
+            )*/
             //
             //No se muestra el campo pero debe mostrarse como un nuevo campo de la entrada de unidades
             //Cambio pendiente
             //buildExistencia(),
-            SizedBox(height: 4),
+            SizedBox(height: 8),
             buildGuardarProductoButton(),
           ],
         ),
@@ -65,6 +79,16 @@ class ProductoFormWidget extends StatelessWidget {
           labelText: 'Nombre',
         ),
       );
+  /* Widget buildId() => TextFormField(
+        maxLines: 1,
+        initialValue: id,
+        enabled: false,
+        onChanged: onChangedId,
+        decoration: InputDecoration(
+          border: UnderlineInputBorder(),
+          labelText: 'Id',
+        ),
+      );*/
 
   Widget buildCosto() => TextFormField(
         maxLines: 1,
@@ -95,21 +119,37 @@ class ProductoFormWidget extends StatelessWidget {
       );
   Widget buildExistencia() => TextFormField(
         maxLines: 1,
-        initialValue: existencia,
-        onChanged: onChangedExistencia,
+        initialValue: null, //existencia//,
+        onChanged: (value) {},
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Existencia de unidades',
         ),
       );
 
-  Widget buildGuardarProductoButton() => ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            Colors.white,
+  Widget buildGuardarProductoButton() => SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+              Colors.white,
+            ),
           ),
+          onPressed: onGuardarProducto,
+          child: Text('Guardar'),
         ),
-        onPressed: onGuardarProducto,
-        child: Text('Guardar'),
+      );
+
+  Widget buildBorrarProductoButton() => SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+              Colors.white,
+            ),
+          ),
+          onPressed: onGuardarProducto,
+          child: Text('Guardar'),
+        ),
       );
 }

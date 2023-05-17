@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
-import 'package:comandas_flutter_git/utils/utils.dart';
 
-class FirebaseApi {
+/*class FirebaseApi {
   static Future<String> createProd(Producto producto) async {
     final docProd = FirebaseFirestore.instance.collection('productos').doc();
     producto.id = docProd.id;
@@ -11,9 +10,19 @@ class FirebaseApi {
     return docProd.id;
   }
 
-  static Stream<List<Producto>> readProd() => FirebaseFirestore.instance
-      .collection('productos')
-      .orderBy(ProductoField.createdTime, descending: true)
-      .snapshots()
-      .transform(Utils.transformer(Producto.fromJson));
-}
+  static Future<void> updateProd(Producto producto) {
+    return FirebaseFirestore.instance
+        .collection('productos')
+        .doc(producto.id)
+        .update(producto.toJson())
+        .then((value) => print('Producto actualizado'))
+        .catchError((error) => print("$error"));
+  }
+
+  static Future deleteProd(Producto producto) async {
+    final docProd =
+        FirebaseFirestore.instance.collection('productos').doc(producto.id);
+
+    await docProd.delete();
+  }
+}*/

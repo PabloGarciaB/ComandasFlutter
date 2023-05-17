@@ -1,4 +1,4 @@
-import 'package:comandas_flutter_git/pages/Home.dart';
+//import 'package:comandas_flutter_git/pages/Home.dart';
 import 'package:comandas_flutter_git/pages/comandas_screen.dart';
 import 'package:comandas_flutter_git/pages/inventario_screen.dart';
 import 'package:comandas_flutter_git/pages/menu_screen.dart';
@@ -22,12 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     _pantallas
-      ..add(const Home())
       ..add(const Inventario())
       ..add(const Menu())
       ..add(const Comandas());
 
-    _currentPage = Home();
+    _currentPage = Inventario();
   }
 
   void _changePage(int selectedIndex) {
@@ -42,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: hexStringToColor("D1913C"),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
       ),
       body: Container(
@@ -61,11 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Inicio',
-            backgroundColor: Color.fromRGBO(189, 168, 28, 74),
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.inventory),
             label: 'Inventario',

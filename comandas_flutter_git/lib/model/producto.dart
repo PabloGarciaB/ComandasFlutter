@@ -25,8 +25,7 @@ class Producto {
     this.bandera = false,
   });
 
-  static Producto fromJson(Map<String, dynamic> json) => Producto(
-      createdTime: Utils.toDateTime(json['createdTime']),
+  /* static Producto fromJson(Map<String, dynamic> json) => Producto(
       nombre: json['nombre'],
       costo: json['costo'],
       entrada: json['entrada'],
@@ -35,11 +34,10 @@ class Producto {
       id: json['id']);
 
   Map<String, dynamic> toJson() => {
-        'fechaCreacion': Utils.fromDateTimeToJson(createdTime),
         'nombre': nombre,
         'costo': costo,
         'entrada': entrada,
         'salida': salida,
         //'existencia': existencia,
-      };
+      };*/
 }
