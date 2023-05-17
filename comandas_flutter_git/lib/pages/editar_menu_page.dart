@@ -4,7 +4,6 @@ import 'package:comandas_flutter_git/reusable_widget/menu_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../Provider Productos/productos.dart';
 import '../Provider/productos.dart';
 import '../utils/colors_util.dart';
 
