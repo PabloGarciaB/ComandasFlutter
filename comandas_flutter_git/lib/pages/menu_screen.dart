@@ -19,8 +19,8 @@ class _MenuState extends State<Menu> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-              hexStringToColor("FFD194"),
-              hexStringToColor("FFD194")
+              hexStringToColor("#FFDFA3"),
+              hexStringToColor("#FFDFA3")
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),
           child: const MenuListWidget(),
@@ -29,7 +29,7 @@ class _MenuState extends State<Menu> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          backgroundColor: hexStringToColor('D1913C'),
+          backgroundColor: hexStringToColor('#FFDFA3'),
           onPressed: () => showDialog(
               context: context,
               builder: (context) {

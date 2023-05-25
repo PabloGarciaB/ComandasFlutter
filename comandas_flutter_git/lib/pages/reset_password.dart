@@ -31,8 +31,8 @@ class _ResetPasswordState extends State<ResetPassword> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            hexStringToColor("D1913C"),
-            hexStringToColor("FFD194"),
+            hexStringToColor("#F2F2F2"),
+            hexStringToColor("#F2F2F2")
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
             child: Padding(

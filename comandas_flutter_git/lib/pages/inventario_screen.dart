@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/Provider/productos.dart';
-import 'package:comandas_flutter_git/api/firebase_api.dart';
+//import 'package:comandas_flutter_git/api/firebase_api.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:flutter/material.dart';
 import 'package:comandas_flutter_git/reusable_widget/agregar_producto_widget.dart';
@@ -24,8 +24,8 @@ class _InventarioState extends State<Inventario> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-              hexStringToColor("FFD194"),
-              hexStringToColor("FFD194")
+              hexStringToColor("#FFDFA3"),
+              hexStringToColor("#FFDFA3")
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),
           child: ProductoListWidget(),
@@ -34,7 +34,8 @@ class _InventarioState extends State<Inventario> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          backgroundColor: hexStringToColor('D1913C'),
+          //fondo rectangular boton
+          backgroundColor: hexStringToColor('#FFDFA3'),
           onPressed: () => showDialog(
               context: context,
               builder: (context) {

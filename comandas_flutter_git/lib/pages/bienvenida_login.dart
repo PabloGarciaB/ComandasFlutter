@@ -26,8 +26,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-          hexStringToColor("D1913C"),
-          hexStringToColor("FFD194")
+          hexStringToColor("#F2F2F2"),
+          hexStringToColor("#F2F2F2")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Padding(
@@ -35,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/bienvenido_logo.png"),
+                logoWidget("lib/res/bienvenido_logo.png"),
                 const SizedBox(
                   height: 30,
                 ),

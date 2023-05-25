@@ -42,6 +42,7 @@ class ProductoWidget extends StatelessWidget {
   Widget buildProducto(BuildContext context) => GestureDetector(
       onTap: () => editProd(context, producto),
       child: Container(
+        //rectangulo tarjeta producto
         color: hexStringToColor('#fac055'),
         padding: const EdgeInsets.all(20),
         child: Row(

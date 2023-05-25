@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/Provider/productos.dart';
-import 'package:comandas_flutter_git/api/firebase_api.dart';
+//import 'package:comandas_flutter_git/api/firebase_api.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:comandas_flutter_git/pages/home_screen.dart';
 import 'package:comandas_flutter_git/reusable_widget/producto_form.dart';
@@ -19,7 +19,7 @@ class EditProdPage extends StatefulWidget {
 }
 
 class _EditProdPageState extends State<EditProdPage> {
-  final _formKey = GlobalKey<FormState>();
+  //final _formKey = GlobalKey<FormState>();
 
   late String nombre;
   late String costo;
@@ -42,7 +42,7 @@ class _EditProdPageState extends State<EditProdPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('Editar articulo'),
+          title: Text('Editar articulo'),
           backgroundColor: hexStringToColor("D1913C"),
           actions: [
             IconButton(
@@ -51,14 +51,14 @@ class _EditProdPageState extends State<EditProdPage> {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: const Text("Eliminar articulo"),
-                          content: const Text("¿Quiere eliminar el articulo?"),
+                          title: Text("Eliminar articulo"),
+                          content: Text("¿Quiere eliminar el articulo?"),
                           actions: [
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: const Text('No')),
+                                child: Text('No')),
                             TextButton(
                                 onPressed: () {
                                   final provider =
@@ -72,12 +72,12 @@ class _EditProdPageState extends State<EditProdPage> {
                                             const HomeScreen(),
                                       ));
                                 },
-                                child: const Text("Si"))
+                                child: Text("Si"))
                           ],
                         );
                       });
                 },
-                icon: const Icon((Icons.delete)))
+                icon: Icon((Icons.delete)))
           ],
         ),
         body: Container(

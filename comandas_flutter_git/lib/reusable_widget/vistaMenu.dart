@@ -1,3 +1,4 @@
+import 'package:comandas_flutter_git/utils/colors_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,8 @@ class MenuWidget extends StatelessWidget {
         onTap: () => editPlat(context, menu),
         child: Container(
           padding: const EdgeInsets.all(20),
+          //FONDO articulo
+          color: hexStringToColor('#fac055'),
           child: Row(
             children: [
               Expanded(

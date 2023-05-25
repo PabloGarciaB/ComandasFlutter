@@ -36,7 +36,7 @@ class ProductoFormWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            buildTitle(),
+            /* buildTitle(),
             const SizedBox(height: 16),
             buildCosto(),
             const SizedBox(height: 16),
@@ -59,7 +59,7 @@ class ProductoFormWidget extends StatelessWidget {
             //Cambio pendiente
             //buildExistencia(),
             const SizedBox(height: 8),
-            buildGuardarProductoButton(),
+            buildGuardarProductoButton(),*/
           ],
         ),
       );
@@ -69,7 +69,7 @@ class ProductoFormWidget extends StatelessWidget {
         initialValue: nombre,
         onChanged: onChangedNombre,
         validator: (nombre) {
-          if (nombre!.isEmpty) {
+          if (nombre == null || nombre.isEmpty) {
             return 'El nombre no puede quedar vacio';
           }
           return null;
@@ -128,19 +128,6 @@ class ProductoFormWidget extends StatelessWidget {
       );
 
   Widget buildGuardarProductoButton() => SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
-              Colors.white,
-            ),
-          ),
-          onPressed: onGuardarProducto,
-          child: const Text('Guardar'),
-        ),
-      );
-
-  Widget buildBorrarProductoButton() => SizedBox(
         width: double.infinity,
         child: ElevatedButton(
           style: ButtonStyle(
