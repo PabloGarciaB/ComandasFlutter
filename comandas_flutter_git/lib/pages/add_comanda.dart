@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 import '../model/comandas.dart';
 import '../utils/colors_util.dart';
 import '../utils/utils.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
+
+import 'home_screen.dart';
 
 class AddComanda extends StatelessWidget {
   CollectionReference productos =
@@ -81,7 +84,13 @@ class AddComanda extends StatelessWidget {
                         ),
                         Container(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const HomeScreen()));
+                            },
                             child: Text('Finalizar'),
                           ),
                         ),
