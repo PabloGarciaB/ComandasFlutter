@@ -13,9 +13,9 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _userTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _userTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +34,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            hexStringToColor("D1913C"),
-            hexStringToColor("FFD194"),
+            hexStringToColor("#F2F2F2"),
+            hexStringToColor("#F2F2F2")
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 120, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
               child: Column(
                 children: <Widget>[
                   const SizedBox(
@@ -47,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   reusableTextField("Ingresa un nombre de usuario",
                       Icons.person, false, _userTextController),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   reusableTextField("Ingresa un correo electronico",
@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                                builder: (context) => const HomeScreen()));
                       }).onError((error, stackTrace) {
                         print("Error ${error.toString()} ");
                       });

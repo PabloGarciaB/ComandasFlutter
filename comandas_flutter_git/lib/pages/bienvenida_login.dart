@@ -15,8 +15,8 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-          hexStringToColor("D1913C"),
-          hexStringToColor("FFD194")
+          hexStringToColor("#F2F2F2"),
+          hexStringToColor("#F2F2F2")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Padding(
@@ -35,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/bienvenido_logo.png"),
+                logoWidget("lib/res/bienvenido_logo.png"),
                 const SizedBox(
                   height: 30,
                 ),
@@ -71,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: ((context) => WelcomeScreen())));
+                            builder: ((context) => const WelcomeScreen())));
                   } else {
                     FirebaseAuth.instance
                         .signInWithEmailAndPassword(
@@ -81,7 +81,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => const HomeScreen()));
                     }).onError((error, stackTrace) {
                       print("Error: ${error.toString()}");
                     });
@@ -105,7 +105,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SignUpScreen()));
+                MaterialPageRoute(builder: (context) => const SignUpScreen()));
           },
           child: const Text(
             "Crear cuenta",
@@ -128,8 +128,8 @@ Widget forgetPassword(BuildContext context) {
         style: TextStyle(color: Colors.black87),
         textAlign: TextAlign.right,
       ),
-      onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ResetPassword())),
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const ResetPassword())),
     ),
   );
 }

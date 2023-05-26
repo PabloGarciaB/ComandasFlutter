@@ -17,7 +17,7 @@ class ProductoWidget extends StatelessWidget {
   Widget build(BuildContext context) => ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Slidable(
-          actionPane: SlidableDrawerActionPane(),
+          actionPane: const SlidableDrawerActionPane(),
           key: Key(producto.id),
           actions: [
             IconSlideAction(
@@ -42,8 +42,9 @@ class ProductoWidget extends StatelessWidget {
   Widget buildProducto(BuildContext context) => GestureDetector(
       onTap: () => editProd(context, producto),
       child: Container(
-        color: hexStringToColor('FFD194'),
-        padding: EdgeInsets.all(20),
+        //rectangulo tarjeta producto
+        color: hexStringToColor('#fac055'),
+        padding: const EdgeInsets.all(20),
         child: Row(
           children: [
             Expanded(
@@ -52,7 +53,7 @@ class ProductoWidget extends StatelessWidget {
                 children: [
                   Text(
                     producto.nombre,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                       fontSize: 22,
@@ -60,26 +61,26 @@ class ProductoWidget extends StatelessWidget {
                   ),
                   if (producto.costo.isNotEmpty)
                     Container(
-                      margin: EdgeInsets.only(top: 4),
+                      margin: const EdgeInsets.only(top: 4),
                       child: Text(
                         producto.costo,
-                        style: TextStyle(fontSize: 12, height: 1.5),
+                        style: const TextStyle(fontSize: 12, height: 1.5),
                       ),
                     ),
                   if (producto.entrada.isNotEmpty)
                     Container(
-                      margin: EdgeInsets.only(top: 4),
+                      margin: const EdgeInsets.only(top: 4),
                       child: Text(
                         producto.entrada,
-                        style: TextStyle(fontSize: 12, height: 1.5),
+                        style: const TextStyle(fontSize: 12, height: 1.5),
                       ),
                     ),
                   if (producto.salida.isNotEmpty)
                     Container(
-                      margin: EdgeInsets.only(top: 4),
+                      margin: const EdgeInsets.only(top: 4),
                       child: Text(
                         producto.salida,
-                        style: TextStyle(fontSize: 12, height: 1.5),
+                        style: const TextStyle(fontSize: 12, height: 1.5),
                       ),
                     ),
                 ],

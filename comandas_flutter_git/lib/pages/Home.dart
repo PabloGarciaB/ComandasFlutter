@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
           hexStringToColor("FFD194"),
           hexStringToColor("FFD194")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Text('Botones para CRUD'),

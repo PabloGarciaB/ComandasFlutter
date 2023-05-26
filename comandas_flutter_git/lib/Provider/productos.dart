@@ -1,16 +1,165 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
+import 'package:comandas_flutter_git/model/menu.dart';
 import 'package:flutter/material.dart';
 
 import '../api/firebase_api.dart';
 
 class ProductosProvider extends ChangeNotifier {
-  List<Producto> _productos = [];
+  final List<Producto> _productos = [
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25'),
+    Producto(
+        createdTime: DateTime.now(),
+        nombre: 'Vaso atolero',
+        costo: 'Costo: \$25',
+        entrada: 'Unidades: 25',
+        salida: 'Unidades: 0',
+        existencia: 'Unidades en existencia: 25')
+  ];
+
+  final List<MenuPlatillo> _platillo = [
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+    MenuPlatillo(
+        createdTime: DateTime.now(),
+        nombrePlatillo: 'Combo Comida',
+        descripcionPlatillo:
+            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+  ];
+
+  final List _comandasItems = [
+    [
+      "Doriesquite",
+      "43",
+      "lib/res/doriesquite_r_m.png",
+      Colors.deepOrangeAccent.shade200
+    ],
+    [
+      "Elote loco",
+      "33",
+      "lib/res/eloteL_r_m.png",
+      Colors.deepOrangeAccent.shade200
+    ],
+    [
+      "Elote sencillo",
+      "23",
+      "lib/res/elote_r_m.png",
+      Colors.deepOrangeAccent.shade200
+    ],
+    [
+      "Maruchan con esquite individual",
+      "43",
+      "lib/res/maruchan_r_m.png",
+      Colors.deepOrangeAccent.shade200
+    ],
+    [
+      "Tres Garcia",
+      "98",
+      "lib/res/tresG_r_m.png",
+      Colors.deepOrangeAccent.shade200
+    ],
+    [
+      "Ingrediente extra",
+      "5",
+      "lib/res/logo 2.png",
+      Colors.deepOrangeAccent.shade200
+    ],
+  ];
+
+  List _cartItems = [];
+
+  List get comandas => _comandasItems;
+
+  List get cartItems => _cartItems;
 
   List<Producto> get productos =>
       _productos.where((productos) => productos.bandera == false).toList();
 
+  List<MenuPlatillo> get menu =>
+      _platillo.where((menu) => menu.bander == false).toList();
+
+  void addItem(int index) {
+    _cartItems.add(_comandasItems[index]);
+    notifyListeners();
+  }
+
+  void removeItem(int index) {
+    _cartItems.removeAt(index);
+    notifyListeners();
+  }
+
+  String calculatedTotal() {
+    double total = 0;
+    for (var i = 0; i < _cartItems.length; i++) {
+      total += double.parse(_cartItems[i][1]);
+    }
+    return total.toString();
+  }
+
   void agregarProd(Producto prod) {
     _productos.add(prod);
+    notifyListeners();
+  }
+
+  void addPlatillo(MenuPlatillo platillo) {
+    _platillo.add(platillo);
+    notifyListeners();
+  }
+
+  void deletePlatillo(MenuPlatillo platillo) {
+    _platillo.remove(platillo);
+    notifyListeners();
+  }
+
+  void updatePlatillo(
+      MenuPlatillo platillo, String nombre, String descripcion) {
+    platillo.nombrePlatillo = nombre;
+    platillo.descripcionPlatillo = descripcion;
     notifyListeners();
   }
 

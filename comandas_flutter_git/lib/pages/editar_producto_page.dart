@@ -1,9 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:comandas_flutter_git/Provider/productos.dart';
-import 'package:comandas_flutter_git/api/firebase_api.dart';
+//import 'package:comandas_flutter_git/api/firebase_api.dart';
 import 'package:comandas_flutter_git/model/producto.dart';
 import 'package:comandas_flutter_git/pages/home_screen.dart';
 import 'package:comandas_flutter_git/reusable_widget/producto_form.dart';
+import 'package:comandas_flutter_git/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -90,19 +91,24 @@ class _EditProdPageState extends State<EditProdPage> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Center(
-              child: ProductoFormWidget(
-                nombre: nombre,
-                costo: costo,
-                entrada: entrada,
-                salida: salida,
-                onChangedNombre: (nombre) =>
-                    setState(() => this.nombre = nombre),
-                onChangedCosto: (costo) => setState(() => this.costo = costo),
-                onChangedEntrada: (entrada) =>
-                    setState(() => this.entrada = entrada),
-                onChangedSalida: (salida) =>
-                    setState(() => this.salida = salida),
-                onGuardarProducto: saveProd,
+              child: Form(
+                key: _formKey,
+                child: ProductoFormWidget(
+                  nombre: nombre,
+                  costo: costo,
+                  entrada: entrada,
+                  salida: salida,
+                  onChangedNombre: (nombre) =>
+                      setState(() => this.nombre = nombre),
+                  onChangedCosto: (costo) => setState(() => this.costo = costo),
+                  onChangedEntrada: (entrada) =>
+                      setState(() => this.entrada = entrada),
+                  onChangedSalida: (salida) =>
+                      setState(() => this.salida = salida),
+                  onGuardarProducto: () {
+                    saveProd();
+                  },
+                ),
               ),
             ),
           ),
@@ -110,10 +116,13 @@ class _EditProdPageState extends State<EditProdPage> {
       );
 
   void saveProd() {
-    final provider = Provider.of<ProductosProvider>(context, listen: false);
+    if (_formKey.currentState!.validate()) {
+      final provider = Provider.of<ProductosProvider>(context, listen: false);
 
-    provider.updateProd(widget.producto, nombre, costo, entrada, salida);
+      provider.updateProd(widget.producto, nombre, costo, entrada, salida);
+      Utils.showSnackBar(context, 'Producto actualizado correctamente');
 
-    Navigator.of(context).pop();
+      Navigator.of(context).pop();
+    }
   }
 }

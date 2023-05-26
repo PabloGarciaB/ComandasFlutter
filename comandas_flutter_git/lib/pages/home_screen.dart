@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ..add(const Menu())
       ..add(const Comandas());
 
-    _currentPage = Inventario();
+    _currentPage = const Inventario();
   }
 
   void _changePage(int selectedIndex) {
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: hexStringToColor("D1913C"),
+      backgroundColor: hexStringToColor("#FFDFA3"),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -48,13 +48,13 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 800,
         width: double.infinity,
         decoration: BoxDecoration(
-            color: hexStringToColor("FFD194"),
-            borderRadius: BorderRadius.only(
+            color: Color.fromARGB(100, 255, 223, 163),
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
             )),
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: _currentPage,
         ),
       ),
@@ -64,17 +64,14 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.inventory),
             label: 'Inventario',
-            backgroundColor: Color.fromRGBO(189, 168, 28, 74),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.restaurant_menu),
             label: "Menu",
-            backgroundColor: Color.fromRGBO(138, 131, 90, 54),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.article),
             label: "Comandas",
-            backgroundColor: Color.fromRGBO(240, 179, 60, 94),
           ),
         ],
         onTap: (selectedIndex) => _changePage(selectedIndex),

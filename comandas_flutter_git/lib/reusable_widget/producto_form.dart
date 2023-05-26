@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/utils.dart';
+
 class ProductoFormWidget extends StatelessWidget {
   final String nombre;
   final String costo;
@@ -36,29 +38,76 @@ class ProductoFormWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            buildTitle(),
-            SizedBox(height: 16),
-            buildCosto(),
-            SizedBox(height: 16),
-            buildEntrada(),
-            SizedBox(height: 16),
-            buildSalida(),
-            SizedBox(height: 16),
-            // buildId(),
-            /*TextFormField(
+            //Titulo articulo
+            TextFormField(
               maxLines: 1,
-              initialValue: id,
-              decoration: InputDecoration(
+              initialValue: nombre,
+              onChanged: onChangedNombre,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'El nombre no puede quedar vacio';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Nombre',
-                enabled: false,
               ),
-            )*/
-            //
+            ),
+            const SizedBox(height: 16),
+            //Costo
+            TextFormField(
+              maxLines: 1,
+              initialValue: costo,
+              onChanged: onChangedCosto,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'El costo no puede quedar vacio';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Costo',
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              maxLines: 1,
+              initialValue: entrada,
+              onChanged: onChangedEntrada,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'El nombre no puede quedar vacio';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Entrada de unidades',
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              maxLines: 1,
+              initialValue: salida,
+              onChanged: onChangedSalida,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'El nombre no puede quedar vacio';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Salida de unidades',
+              ),
+            ),
+
             //No se muestra el campo pero debe mostrarse como un nuevo campo de la entrada de unidades
             //Cambio pendiente
             //buildExistencia(),
-            SizedBox(height: 8),
+            const SizedBox(height: 16),
             buildGuardarProductoButton(),
           ],
         ),
@@ -69,32 +118,22 @@ class ProductoFormWidget extends StatelessWidget {
         initialValue: nombre,
         onChanged: onChangedNombre,
         validator: (nombre) {
-          if (nombre!.isEmpty) {
+          if (nombre == null || nombre.isEmpty) {
             return 'El nombre no puede quedar vacio';
           }
           return null;
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Nombre',
         ),
       );
-  /* Widget buildId() => TextFormField(
-        maxLines: 1,
-        initialValue: id,
-        enabled: false,
-        onChanged: onChangedId,
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: 'Id',
-        ),
-      );*/
 
   Widget buildCosto() => TextFormField(
         maxLines: 1,
         initialValue: costo,
         onChanged: onChangedCosto,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Precio',
         ),
@@ -103,7 +142,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: entrada,
         onChanged: onChangedEntrada,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Entrada de unidades',
         ),
@@ -112,7 +151,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: salida,
         onChanged: onChangedSalida,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Salida de unidades',
         ),
@@ -121,7 +160,7 @@ class ProductoFormWidget extends StatelessWidget {
         maxLines: 1,
         initialValue: null, //existencia//,
         onChanged: (value) {},
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Existencia de unidades',
         ),
@@ -136,20 +175,7 @@ class ProductoFormWidget extends StatelessWidget {
             ),
           ),
           onPressed: onGuardarProducto,
-          child: Text('Guardar'),
-        ),
-      );
-
-  Widget buildBorrarProductoButton() => SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
-              Colors.white,
-            ),
-          ),
-          onPressed: onGuardarProducto,
-          child: Text('Guardar'),
+          child: const Text('Guardar'),
         ),
       );
 }
