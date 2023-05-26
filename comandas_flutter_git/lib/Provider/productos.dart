@@ -11,36 +11,36 @@ class ProductosProvider extends ChangeNotifier {
         createdTime: DateTime.now(),
         nombre: 'Vaso atolero',
         costo: 'Costo: \$25',
-        entrada: 'Unidades: 25',
-        salida: 'Unidades: 0',
+        entrada: 'Entrada de unidades: 25',
+        salida: 'Salida de unidades: 0',
         existencia: 'Unidades en existencia: 25'),
     Producto(
         createdTime: DateTime.now(),
-        nombre: 'Vaso atolero',
+        nombre: 'Domo hamburguesero',
         costo: 'Costo: \$25',
-        entrada: 'Unidades: 25',
-        salida: 'Unidades: 0',
+        entrada: 'Entrada de unidades: 25',
+        salida: 'Salida de unidades: 0',
         existencia: 'Unidades en existencia: 25'),
     Producto(
         createdTime: DateTime.now(),
-        nombre: 'Vaso atolero',
-        costo: 'Costo: \$25',
-        entrada: 'Unidades: 25',
-        salida: 'Unidades: 0',
+        nombre: 'Vaso de medio litro',
+        costo: 'Costo: \$35',
+        entrada: 'Entrada de unidades: 25',
+        salida: 'Salida de unidades: 0',
         existencia: 'Unidades en existencia: 25'),
     Producto(
         createdTime: DateTime.now(),
-        nombre: 'Vaso atolero',
-        costo: 'Costo: \$25',
-        entrada: 'Unidades: 25',
-        salida: 'Unidades: 0',
-        existencia: 'Unidades en existencia: 25'),
+        nombre: 'Palo de elote',
+        costo: 'Costo: \$40',
+        entrada: 'Entrada de unidades: 1kg',
+        salida: 'Salida de unidades: 0',
+        existencia: 'Unidades en existencia: 1kg'),
     Producto(
         createdTime: DateTime.now(),
-        nombre: 'Vaso atolero',
-        costo: 'Costo: \$25',
-        entrada: 'Unidades: 25',
-        salida: 'Unidades: 0',
+        nombre: 'Vaso de litro',
+        costo: 'Costo: \$30',
+        entrada: 'Entrada de unidades: 25',
+        salida: 'Salida de unidades: 0',
         existencia: 'Unidades en existencia: 25')
   ];
 
@@ -52,24 +52,22 @@ class ProductosProvider extends ChangeNotifier {
             'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
     MenuPlatillo(
         createdTime: DateTime.now(),
-        nombrePlatillo: 'Combo Comida',
+        nombrePlatillo: 'Doriesquite',
         descripcionPlatillo:
-            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+            'Esquites preparados con mayonesa, quesito añejo, quesito amarillo, limón y fritura preferida.'),
     MenuPlatillo(
         createdTime: DateTime.now(),
-        nombrePlatillo: 'Combo Comida',
-        descripcionPlatillo:
-            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+        nombrePlatillo: 'Esquite sencillo',
+        descripcionPlatillo: 'Esquite con quesito anejo, limón y mayonesa.'),
     MenuPlatillo(
         createdTime: DateTime.now(),
-        nombrePlatillo: 'Combo Comida',
-        descripcionPlatillo:
-            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+        nombrePlatillo: 'Elote',
+        descripcionPlatillo: 'Delicioso elote con quesito anejo y mayonesa.'),
     MenuPlatillo(
         createdTime: DateTime.now(),
-        nombrePlatillo: 'Combo Comida',
+        nombrePlatillo: 'Elote loco',
         descripcionPlatillo:
-            'Chapata a elegir, agua de fruta natural, ensalda pequeña'),
+            'Elote con mayonesa bañado en tu fritura preferida, quesito añejo y quesito amarillo.'),
   ];
 
   final List _comandasItems = [

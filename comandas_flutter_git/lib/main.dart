@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: hexStringToColor('#000000')),
             useMaterial3: true,
           ),
-          home: const HomeScreen(),
+          home: const WelcomeScreen(),
         ),
       );
 }
